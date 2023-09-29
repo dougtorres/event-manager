@@ -18,9 +18,16 @@ Route::get('/login', function () {
     return view('login');
 })->middleware('validateIsLogged');
 
-
 Route::get('/', function () {
+    return view('login');
+})->middleware('validateIsLogged');
+
+Route::get('/home', function () {
     return view('welcome');
+})->middleware('validateToken');
+
+Route::get('/users', function () {
+    return view('users');
 })->middleware('validateToken');
 
 Route::post('/auth/login', [\App\Http\Controllers\LoginController::class, 'login']);
