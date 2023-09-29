@@ -10,7 +10,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
 
-        $response = Http::post('http://localhost:8080/auth/login', [
+        $response = Http::post('https://eventmanager-t6f6ooyzca-uc.a.run.app/auth/login', [
             'login' => $request->input('login'),
             'password' => $request->input('password'),
         ]);
@@ -20,7 +20,7 @@ class LoginController extends Controller
         if ($status == 200) {
             $token = $response->json();
             $request->session()->put('token', $token['token']);
-            return redirect('/');
+            return redirect('/home');
         } else {
             return redirect('/login?error=login');
         }

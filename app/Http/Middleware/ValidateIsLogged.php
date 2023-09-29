@@ -16,7 +16,7 @@ class ValidateIsLogged
     public function handle(Request $request, Closure $next): Response
     {
         if (session()->has("token")) {
-            return redirect('/');
+            return redirect('/home');
 
         }
 
